@@ -9,10 +9,10 @@ import (
 	"crypto/rand"
 	"encoding/binary"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/txscript"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil/gcs"
+	"github.com/wakiyamap/monad/chaincfg/chainhash"
+	"github.com/wakiyamap/monad/txscript"
+	"github.com/wakiyamap/monad/wire"
+	"github.com/wakiyamap/monautil/gcs"
 )
 
 // DefaultP is the default collision probability (2^-20)

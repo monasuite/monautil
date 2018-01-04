@@ -7,8 +7,8 @@ package hdkeychain_test
 import (
 	"fmt"
 
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcutil/hdkeychain"
+	"github.com/wakiyamap/monad/chaincfg"
+	"github.com/wakiyamap/monautil/hdkeychain"
 )
 
 // This example demonstrates how to generate a cryptographically random seed
@@ -117,7 +117,7 @@ func Example_defaultWalletLayout() {
 	}
 
 	// Get and show the address associated with the extended keys for the
-	// main bitcoin	network.
+	// main monacoin	network.
 	acct0ExtAddr, err := acct0Ext10.Address(&chaincfg.MainNetParams)
 	if err != nil {
 		fmt.Println(err)

@@ -6,7 +6,7 @@ package hdkeychain
 
 // References:
 //   [BIP32]: BIP0032 - Hierarchical Deterministic Wallets
-//   https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
+//   https://github.com/monacoin/bips/blob/master/bip-0032.mediawiki
 
 import (
 	"bytes"
@@ -16,7 +16,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/roasbeef/btcd/chaincfg"
+	"github.com/wakiyamap/monad/chaincfg"
 )
 
 // TestBIP0032Vectors tests the vectors provided by [BIP32] to ensure the

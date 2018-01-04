@@ -1,13 +1,13 @@
 txsort
 ======
 
-[![Build Status](http://img.shields.io/travis/roasbeef/btcutil.svg)]
-(https://travis-ci.org/roasbeef/btcutil) [![ISC License]
+[![Build Status](http://img.shields.io/travis/wakiyamap/monautil.svg)]
+(https://travis-ci.org/wakiyamap/monautil) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/roasbeef/btcutil/txsort)
+(http://godoc.org/github.com/wakiyamap/monautil/txsort)
 
-Package txsort provides the transaction sorting according to [BIP 69](https://github.com/bitcoin/bips/blob/master/bip-0069.mediawiki).
+Package txsort provides the transaction sorting according to [BIP 69](https://github.com/monacoin/bips/blob/master/bip-0069.mediawiki).
 
 BIP 69 defines a standard lexicographical sort order of transaction inputs and
 outputs.  This is useful to standardize transactions for faster multi-party
@@ -24,7 +24,7 @@ A comprehensive suite of tests is provided to ensure proper functionality.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/roasbeef/btcutil/txsort
+$ go get -u github.com/wakiyamap/monautil/txsort
 ```
 
 ## License

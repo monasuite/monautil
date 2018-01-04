@@ -2,16 +2,16 @@
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-package btcutil
+package monautil
 
 import (
 	"bytes"
 	"errors"
 
-	"github.com/roasbeef/btcd/btcec"
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcutil/base58"
+	"github.com/wakiyamap/monad/btcec"
+	"github.com/wakiyamap/monad/chaincfg"
+	"github.com/wakiyamap/monad/chaincfg/chainhash"
+	"github.com/wakiyamap/monautil/base58"
 )
 
 // ErrMalformedPrivateKey describes an error where a WIF-encoded private
@@ -40,7 +40,7 @@ type WIF struct {
 	// uncompressed (65-byte) one.
 	CompressPubKey bool
 
-	// netID is the bitcoin network identifier byte used when
+	// netID is the monacoin network identifier byte used when
 	// WIF encoding the private key.
 	netID byte
 }
@@ -57,7 +57,7 @@ func NewWIF(privKey *btcec.PrivateKey, net *chaincfg.Params, compress bool) (*WI
 }
 
 // IsForNet returns whether or not the decoded WIF structure is associated
-// with the passed bitcoin network.
+// with the passed monacoin network.
 func (w *WIF) IsForNet(net *chaincfg.Params) bool {
 	return w.netID == net.PrivateKeyID
 }

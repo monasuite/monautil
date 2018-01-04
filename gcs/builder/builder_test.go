@@ -9,13 +9,13 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/txscript"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil"
-	"github.com/roasbeef/btcutil/gcs"
-	"github.com/roasbeef/btcutil/gcs/builder"
+	"github.com/wakiyamap/monad/chaincfg"
+	"github.com/wakiyamap/monad/chaincfg/chainhash"
+	"github.com/wakiyamap/monad/txscript"
+	"github.com/wakiyamap/monad/wire"
+	"github.com/wakiyamap/monautil"
+	"github.com/wakiyamap/monautil/gcs"
+	"github.com/wakiyamap/monautil/gcs/builder"
 )
 
 var (
@@ -79,8 +79,8 @@ func TestUseBlockHash(t *testing.T) {
 		Index: 4321,
 	}
 
-	// btcutil.Address
-	addr, err := btcutil.DecodeAddress(testAddr, &chaincfg.MainNetParams)
+	// monautil.Address
+	addr, err := monautil.DecodeAddress(testAddr, &chaincfg.MainNetParams)
 	if err != nil {
 		t.Fatalf("Address decode failed: %s", err.Error())
 	}

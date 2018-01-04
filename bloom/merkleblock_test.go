@@ -9,10 +9,10 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil"
-	"github.com/roasbeef/btcutil/bloom"
+	"github.com/wakiyamap/monad/chaincfg/chainhash"
+	"github.com/wakiyamap/monad/wire"
+	"github.com/wakiyamap/monautil"
+	"github.com/wakiyamap/monautil/bloom"
 )
 
 func TestMerkleBlock3(t *testing.T) {
@@ -29,7 +29,7 @@ func TestMerkleBlock3(t *testing.T) {
 		t.Errorf("TestMerkleBlock3 DecodeString failed: %v", err)
 		return
 	}
-	blk, err := btcutil.NewBlockFromBytes(blockBytes)
+	blk, err := monautil.NewBlockFromBytes(blockBytes)
 	if err != nil {
 		t.Errorf("TestMerkleBlock3 NewBlockFromBytes failed: %v", err)
 		return

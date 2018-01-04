@@ -1,13 +1,13 @@
 hdkeychain
 ==========
 
-[![Build Status](http://img.shields.io/travis/roasbeef/btcutil.svg)]
-(https://travis-ci.org/roasbeef/btcutil) [![ISC License]
+[![Build Status](http://img.shields.io/travis/wakiyamap/monautil.svg)]
+(https://travis-ci.org/wakiyamap/monautil) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/roasbeef/btcutil/hdkeychain)
+(http://godoc.org/github.com/wakiyamap/monautil/hdkeychain)
 
-Package hdkeychain provides an API for bitcoin hierarchical deterministic
+Package hdkeychain provides an API for monacoin hierarchical deterministic
 extended keys (BIP0032).
 
 A comprehensive suite of tests is provided to ensure proper functionality.  See
@@ -25,8 +25,8 @@ report.
 - Easy serialization and deserialization for both private and public extended
   keys
 - Support for custom networks by registering them with chaincfg
-- Obtaining the underlying EC pubkeys, EC privkeys, and associated bitcoin
-  addresses ties in seamlessly with existing btcec and btcutil types which
+- Obtaining the underlying EC pubkeys, EC privkeys, and associated monacoin
+  addresses ties in seamlessly with existing btcec and monautil types which
   provide powerful tools for working with them to do things like sign
   transations and generate payment scripts
 - Uses the btcec package which is highly optimized for secp256k1
@@ -41,21 +41,21 @@ report.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/roasbeef/btcutil/hdkeychain
+$ go get -u github.com/wakiyamap/monautil/hdkeychain
 ```
 
 ## Examples
 
 * [NewMaster Example]
-  (http://godoc.org/github.com/roasbeef/btcutil/hdkeychain#example-NewMaster)  
+  (http://godoc.org/github.com/wakiyamap/monautil/hdkeychain#example-NewMaster)  
   Demonstrates how to generate a cryptographically random seed then use it to
   create a new master node (extended key).
 * [Default Wallet Layout Example]
-  (http://godoc.org/github.com/roasbeef/btcutil/hdkeychain#example-package--DefaultWalletLayout)  
+  (http://godoc.org/github.com/wakiyamap/monautil/hdkeychain#example-package--DefaultWalletLayout)  
   Demonstrates the default hierarchical deterministic wallet layout as described
   in BIP0032.
 * [Audits Use Case Example]
-  (http://godoc.org/github.com/roasbeef/btcutil/hdkeychain#example-package--Audits)  
+  (http://godoc.org/github.com/wakiyamap/monautil/hdkeychain#example-package--Audits)  
   Demonstrates the audits use case in BIP0032.
 
 ## License

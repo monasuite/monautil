@@ -9,9 +9,9 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil/bloom"
+	"github.com/wakiyamap/monad/chaincfg/chainhash"
+	"github.com/wakiyamap/monad/wire"
+	"github.com/wakiyamap/monautil/bloom"
 )
 
 // This example demonstrates how to create a new bloom filter, add a transaction
@@ -27,7 +27,7 @@ func ExampleNewFilter() {
 
 	// Create a transaction hash and add it to the filter.  This particular
 	// trasaction is the first transaction in block 310,000 of the main
-	// bitcoin block chain.
+	// monacoin block chain.
 	txHashStr := "fd611c56ca0d378cdcd16244b45c2ba9588da3adac367c4ef43e808b280b8a45"
 	txHash, err := chainhash.NewHashFromStr(txHashStr)
 	if err != nil {

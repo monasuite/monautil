@@ -7,7 +7,7 @@ package base58_test
 import (
 	"fmt"
 
-	"github.com/roasbeef/btcutil/base58"
+	"github.com/wakiyamap/monautil/base58"
 )
 
 // This example demonstrates how to decode modified base58 encoded data.

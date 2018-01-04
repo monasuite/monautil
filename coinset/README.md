@@ -1,13 +1,13 @@
 coinset
 =======
 
-[![Build Status](http://img.shields.io/travis/roasbeef/btcutil.svg)]
-(https://travis-ci.org/roasbeef/btcutil) [![ISC License]
+[![Build Status](http://img.shields.io/travis/wakiyamap/monautil.svg)]
+(https://travis-ci.org/wakiyamap/monautil) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/roasbeef/btcutil/coinset)
+(http://godoc.org/github.com/wakiyamap/monautil/coinset)
 
-Package coinset provides bitcoin-specific convenience functions for selecting
+Package coinset provides monacoin-specific convenience functions for selecting
 from and managing sets of unspent transaction outpoints (UTXOs).
 
 A comprehensive suite of tests is provided to ensure proper functionality.  See
@@ -18,7 +18,7 @@ report.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/roasbeef/btcutil/coinset
+$ go get -u github.com/wakiyamap/monautil/coinset
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ $ go get -u github.com/roasbeef/btcutil/coinset
 Each unspent transaction outpoint is represented by the Coin interface.  An
 example of a concrete type that implements Coin is coinset.SimpleCoin.
 
-The typical use case for this library is for creating raw bitcoin transactions
+The typical use case for this library is for creating raw monacoin transactions
 given a set of Coins that may be spent by the user, for example as below:
 
 ```Go
