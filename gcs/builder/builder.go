@@ -20,9 +20,12 @@ const DefaultP = 20
 
 // GCSBuilder is a utility class that makes building GCS filters convenient.
 type GCSBuilder struct {
-	p    uint8
-	key  [gcs.KeySize]byte
-	data [][]byte
+	p   uint8
+	key [gcs.KeySize]byte
+
+	// data is a set of entries represented as strings. This is done to
+	// deduplicate items as they are added.
+	data map[string]struct{}
 	err  error
 }
 
@@ -125,8 +128,8 @@ func (b *GCSBuilder) Preallocate(n uint32) *GCSBuilder {
 		return b
 	}
 
-	if len(b.data) == 0 {
-		b.data = make([][]byte, 0, n)
+	if b.data == nil {
+		b.data = make(map[string]struct{}, n)
 	}
 
 	return b
@@ -140,7 +143,7 @@ func (b *GCSBuilder) AddEntry(data []byte) *GCSBuilder {
 		return b
 	}
 
-	b.data = append(b.data, data)
+	b.data[string(data)] = struct{}{}
 	return b
 }
 
@@ -217,7 +220,12 @@ func (b *GCSBuilder) Build() (*gcs.Filter, error) {
 		return nil, b.err
 	}
 
-	return gcs.BuildGCSFilter(b.p, b.key, b.data)
+	dataSlice := make([][]byte, 0, len(b.data))
+	for item := range b.data {
+		dataSlice = append(dataSlice, []byte(item))
+	}
+
+	return gcs.BuildGCSFilter(b.p, b.key, dataSlice)
 }
 
 // WithKeyPN creates a GCSBuilder with specified key and the passed probability
@@ -371,21 +379,23 @@ func BuildExtFilter(block *wire.MsgBlock) (*gcs.Filter, error) {
 }
 
 // GetFilterHash returns the double-SHA256 of the filter.
-func GetFilterHash(filter *gcs.Filter) chainhash.Hash {
-	var zero chainhash.Hash
-	if filter == nil {
-		return zero
+func GetFilterHash(filter *gcs.Filter) (chainhash.Hash, error) {
+	filterData, err := filter.NBytes()
+	if err != nil {
+		return chainhash.Hash{}, err
 	}
 
-	hash1 := chainhash.HashH(filter.NBytes())
-	return chainhash.HashH(hash1[:])
+	return chainhash.DoubleHashH(filterData), nil
 }
 
 // MakeHeaderForFilter makes a filter chain header for a filter, given the
 // filter and the previous filter chain header.
-func MakeHeaderForFilter(filter *gcs.Filter, prevHeader chainhash.Hash) chainhash.Hash {
+func MakeHeaderForFilter(filter *gcs.Filter, prevHeader chainhash.Hash) (chainhash.Hash, error) {
 	filterTip := make([]byte, 2*chainhash.HashSize)
-	filterHash := GetFilterHash(filter)
+	filterHash, err := GetFilterHash(filter)
+	if err != nil {
+		return chainhash.Hash{}, err
+	}
 
 	// In the buffer we created above we'll compute hash || prevHash as an
 	// intermediate value.
@@ -394,6 +404,5 @@ func MakeHeaderForFilter(filter *gcs.Filter, prevHeader chainhash.Hash) chainhas
 
 	// The final filter hash is the double-sha256 of the hash computed
 	// above.
-	hash1 := chainhash.HashH(filterTip)
-	return chainhash.HashH(hash1[:])
+	return chainhash.DoubleHashH(filterTip), nil
 }
