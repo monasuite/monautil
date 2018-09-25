@@ -9,13 +9,13 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/wakiyamap/monad/chaincfg"
 	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/txscript"
 	"github.com/wakiyamap/monad/wire"
 	"github.com/wakiyamap/monautil"
+	"github.com/wakiyamap/monautil/chaincfg"
 	"github.com/wakiyamap/monautil/gcs"
 	"github.com/wakiyamap/monautil/gcs/builder"
+	"github.com/wakiyamap/monautil/txscript"
 )
 
 var (

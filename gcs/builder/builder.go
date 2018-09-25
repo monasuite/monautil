@@ -11,9 +11,9 @@ import (
 	"math"
 
 	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/txscript"
 	"github.com/wakiyamap/monad/wire"
 	"github.com/wakiyamap/monautil/gcs"
+	"github.com/wakiyamap/monautil/txscript"
 )
 
 const (

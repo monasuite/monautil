@@ -19,10 +19,10 @@ import (
 	"math/big"
 
 	"github.com/wakiyamap/monad/btcec"
-	"github.com/wakiyamap/monad/chaincfg"
 	"github.com/wakiyamap/monad/chaincfg/chainhash"
 	"github.com/wakiyamap/monautil"
 	"github.com/wakiyamap/monautil/base58"
+	"github.com/wakiyamap/monautil/chaincfg"
 )
 
 const (

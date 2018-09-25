@@ -13,8 +13,8 @@ import (
 	"testing"
 
 	"github.com/btcsuite/golangcrypto/ripemd160"
-	"github.com/wakiyamap/monad/chaincfg"
 	"github.com/wakiyamap/monautil"
+	"github.com/wakiyamap/monautil/chaincfg"
 )
 
 func TestAddresses(t *testing.T) {

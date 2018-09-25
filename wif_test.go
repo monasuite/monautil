@@ -8,8 +8,8 @@ import (
 	"testing"
 
 	"github.com/wakiyamap/monad/btcec"
-	"github.com/wakiyamap/monad/chaincfg"
 	. "github.com/wakiyamap/monautil"
+	"github.com/wakiyamap/monautil/chaincfg"
 )
 
 func TestEncodeDecodeWIF(t *testing.T) {

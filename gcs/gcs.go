@@ -12,8 +12,8 @@ import (
 	"sort"
 
 	"github.com/aead/siphash"
-	"github.com/wakiyamap/monad/wire"
 	"github.com/kkdai/bstream"
+	"github.com/wakiyamap/monad/wire"
 )
 
 // Inspired by https://github.com/rasky/gcs

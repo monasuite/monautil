@@ -10,9 +10,9 @@ import (
 	"sync"
 
 	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/txscript"
 	"github.com/wakiyamap/monad/wire"
 	"github.com/wakiyamap/monautil"
+	"github.com/wakiyamap/monautil/txscript"
 )
 
 // ln2Squared is simply the square of the natural log of 2.

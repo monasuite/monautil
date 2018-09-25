@@ -10,9 +10,9 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/wakiyamap/monad/chaincfg/chainhash"
 	"github.com/wakiyamap/monautil"
-	"github.com/davecgh/go-spew/spew"
 )
 
 // TestTx tests the API for Tx.

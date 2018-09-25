@@ -9,9 +9,9 @@ import (
 	"errors"
 
 	"github.com/wakiyamap/monad/btcec"
-	"github.com/wakiyamap/monad/chaincfg"
 	"github.com/wakiyamap/monad/chaincfg/chainhash"
 	"github.com/wakiyamap/monautil/base58"
+	"github.com/wakiyamap/monautil/chaincfg"
 )
 
 // ErrMalformedPrivateKey describes an error where a WIF-encoded private
@@ -42,7 +42,7 @@ type WIF struct {
 
 	// netID is the monacoin network identifier byte used when
 	// WIF encoding the private key.
-	netID byte
+	netID []byte
 }
 
 // NewWIF creates a new WIF structure to export an address and its private key
@@ -59,7 +59,7 @@ func NewWIF(privKey *btcec.PrivateKey, net *chaincfg.Params, compress bool) (*WI
 // IsForNet returns whether or not the decoded WIF structure is associated
 // with the passed monacoin network.
 func (w *WIF) IsForNet(net *chaincfg.Params) bool {
-	return w.netID == net.PrivateKeyID
+	return bytes.Equal(w.netID, net.PrivateKeyID)
 }
 
 // DecodeWIF creates a new WIF structure by decoding the string encoding of
@@ -115,7 +115,7 @@ func DecodeWIF(wif string) (*WIF, error) {
 		return nil, ErrChecksumMismatch
 	}
 
-	netID := decoded[0]
+	netID := decoded[:1]
 	privKeyBytes := decoded[1 : 1+btcec.PrivKeyBytesLen]
 	privKey, _ := btcec.PrivKeyFromBytes(btcec.S256(), privKeyBytes)
 	return &WIF{privKey, compress, netID}, nil
@@ -129,13 +129,13 @@ func (w *WIF) String() string {
 	// is one byte for the network, 32 bytes of private key, possibly one
 	// extra byte if the pubkey is to be compressed, and finally four
 	// bytes of checksum.
-	encodeLen := 1 + btcec.PrivKeyBytesLen + 4
+	encodeLen := len(w.netID) + btcec.PrivKeyBytesLen + 4
 	if w.CompressPubKey {
 		encodeLen++
 	}
 
 	a := make([]byte, 0, encodeLen)
-	a = append(a, w.netID)
+	a = append(a, w.netID...)
 	// Pad and append bytes manually, instead of using Serialize, to
 	// avoid another call to make.
 	a = paddedAppend(btcec.PrivKeyBytesLen, a, w.PrivKey.D.Bytes())
