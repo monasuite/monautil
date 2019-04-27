@@ -119,7 +119,7 @@ func BuildGCSFilter(P uint8, M uint64, key [KeySize]byte, data [][]byte) (*Filte
 	}
 
 	// Build the filter.
-	values := make(uint64Slice, 0, len(data))
+	values := make([]uint64, 0, len(data))
 	b := bstream.NewBStreamWriter(0)
 
 	// Insert the hash (fast-ranged over a space of N*P) of each data
@@ -138,7 +138,7 @@ func BuildGCSFilter(P uint8, M uint64, key [KeySize]byte, data [][]byte) (*Filte
 		v = fastReduction(v, nphi, nplo)
 		values = append(values, v)
 	}
-	sort.Sort(values)
+	sort.Slice(values, func(i, j int) bool { return values[i] < values[j] })
 
 	// Write the sorted list of values into the filter bitstream,
 	// compressing it using Golomb coding.
@@ -304,12 +304,11 @@ func (f *Filter) Match(key [KeySize]byte, data []byte) (bool, error) {
 	term = fastReduction(term, nphi, nplo)
 
 	// Go through the search filter and look for the desired value.
-	var lastValue uint64
-	for lastValue < term {
-
+	var value uint64
+	for i := uint32(0); i < f.N(); i++ {
 		// Read the difference between previous and new value from
 		// bitstream.
-		value, err := f.readFullUint64(b)
+		delta, err := f.readFullUint64(b)
 		if err != nil {
 			if err == io.EOF {
 				return false, nil
@@ -317,15 +316,25 @@ func (f *Filter) Match(key [KeySize]byte, data []byte) (bool, error) {
 			return false, err
 		}
 
-		// Add the previous value to it.
-		value += lastValue
-		if value == term {
-			return true, nil
-		}
+		// Add the delta to the previous value.
+		value += delta
+		switch {
 
-		lastValue = value
+		// The current value matches our query term, success.
+		case value == term:
+			return true, nil
+
+		// The current value is greater than our query term, thus no
+		// future decoded value can match because the values
+		// monotonically increase.
+		case value > term:
+			return false, nil
+		}
 	}
 
+	// All values were decoded and none produced a successful match. This
+	// indicates that the items in the filter were all smaller than our
+	// target.
 	return false, nil
 }
 
@@ -365,7 +374,7 @@ func (f *Filter) ZipMatchAny(key [KeySize]byte, data [][]byte) (bool, error) {
 	b := bstream.NewBStreamReader(filterData)
 
 	// Create an uncompressed filter of the search values.
-	values := make(uint64Slice, 0, len(data))
+	values := make([]uint64, 0, len(data))
 
 	// First, we cache the high and low bits of modulusNP for the
 	// multiplication of 2 64-bit integers into a 128-bit integer.
@@ -380,44 +389,57 @@ func (f *Filter) ZipMatchAny(key [KeySize]byte, data [][]byte) (bool, error) {
 		v = fastReduction(v, nphi, nplo)
 		values = append(values, v)
 	}
-	sort.Sort(values)
+	sort.Slice(values, func(i, j int) bool { return values[i] < values[j] })
+
+	querySize := len(values)
 
 	// Zip down the filters, comparing values until we either run out of
 	// values to compare in one of the filters or we reach a matching
 	// value.
-	var lastValue1, lastValue2 uint64
-	lastValue2 = values[0]
-	i := 1
-	for lastValue1 != lastValue2 {
-		// Check which filter to advance to make sure we're comparing
-		// the right values.
-		switch {
-		case lastValue1 > lastValue2:
-			// Advance filter created from search terms or return
-			// false if we're at the end because nothing matched.
-			if i < len(values) {
-				lastValue2 = values[i]
-				i++
-			} else {
+	var (
+		value      uint64
+		queryIndex int
+	)
+out:
+	for i := uint32(0); i < f.N(); i++ {
+		// Advance filter we're searching or return false if we're at
+		// the end because nothing matched.
+		delta, err := f.readFullUint64(b)
+		if err != nil {
+			if err == io.EOF {
 				return false, nil
 			}
-		case lastValue2 > lastValue1:
-			// Advance filter we're searching or return false if
-			// we're at the end because nothing matched.
-			value, err := f.readFullUint64(b)
-			if err != nil {
-				if err == io.EOF {
-					return false, nil
-				}
-				return false, err
+			return false, err
+		}
+		value += delta
+
+		for {
+			switch {
+
+			// All query items have been exhausted and we haven't
+			// had a match, therefore there are no matches.
+			case queryIndex == querySize:
+				return false, nil
+
+			// The current item in the query matches the decoded
+			// value, success.
+			case values[queryIndex] == value:
+				return true, nil
+
+			// The current item in the query is greater than the
+			// current decoded value, continue to decode the next
+			// delta and try again.
+			case values[queryIndex] > value:
+				continue out
 			}
-			lastValue1 += value
+
+			queryIndex++
 		}
 	}
 
-	// If we've made it this far, an element matched between filters so we
-	// return true.
-	return true, nil
+	// All items in the filter were decoded and none produced a successful
+	// match.
+	return false, nil
 }
 
 // HashMatchAny returns checks whether any []byte value is likely (within
