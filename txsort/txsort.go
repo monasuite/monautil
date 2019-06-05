@@ -11,8 +11,8 @@ import (
 	"bytes"
 	"sort"
 
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monad/wire"
 )
 
 // InPlaceSort modifies the passed transaction inputs and outputs to be sorted

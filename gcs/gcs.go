@@ -12,7 +12,7 @@ import (
 	"sort"
 
 	"github.com/aead/siphash"
-	"github.com/wakiyamap/monad/wire"
+	"github.com/monasuite/monad/wire"
 	"github.com/kkdai/bstream"
 )
 

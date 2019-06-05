@@ -12,8 +12,8 @@ import (
 	"strings"
 
 	"github.com/btcsuite/golangcrypto/ripemd160"
-	"github.com/wakiyamap/monad/btcec"
-	"github.com/wakiyamap/monad/chaincfg"
+	"github.com/monasuite/monad/btcec"
+	"github.com/monasuite/monad/chaincfg"
 	"github.com/wakiyamap/monautil/base58"
 	"github.com/wakiyamap/monautil/bech32"
 )

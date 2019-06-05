@@ -7,8 +7,8 @@ package monautil_test
 import (
 	"testing"
 
-	"github.com/wakiyamap/monad/btcec"
-	"github.com/wakiyamap/monad/chaincfg"
+	"github.com/monasuite/monad/btcec"
+	"github.com/monasuite/monad/chaincfg"
 	. "github.com/wakiyamap/monautil"
 )
 

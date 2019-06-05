@@ -8,8 +8,8 @@ import (
 	"bytes"
 	"io"
 
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monad/wire"
 )
 
 // TxIndexUnknown is the value returned for a transaction index that is unknown.

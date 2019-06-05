@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monad/wire"
 	"github.com/wakiyamap/monautil"
 	"github.com/davecgh/go-spew/spew"
 )

@@ -13,7 +13,7 @@ package monautil
 
 import (
 	"github.com/Roasbeef/monautil/bech32"
-	"github.com/wakiyamap/monad/btcec"
+	"github.com/monasuite/monad/btcec"
 	"github.com/wakiyamap/monautil/base58"
 	"golang.org/x/crypto/ripemd160"
 )
