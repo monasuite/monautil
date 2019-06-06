@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wakiyamap/monautil"
+	"github.com/monasuite/monautil"
 	//"github.com/davecgh/go-spew/spew"
 )
 

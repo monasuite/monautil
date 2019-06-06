@@ -6,11 +6,11 @@ bloom
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/btcsuite/monautil/bloom)
 =======
-[![Build Status](http://img.shields.io/travis/wakiyamap/monautil.svg)]
-(https://travis-ci.org/wakiyamap/monautil) [![ISC License]
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)]
+(https://travis-ci.org/monasuite/monautil) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/wakiyamap/monautil/bloom)
+(http://godoc.org/github.com/monasuite/monautil/bloom)
 >>>>>>> a259eaf... multi: switch imports back to roasbeef
 
 Package bloom provides an API for dealing with monacoin-specific bloom filters.
@@ -23,14 +23,14 @@ report.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/wakiyamap/monautil/bloom
+$ go get -u github.com/monasuite/monautil/bloom
 ```
 
 ## Examples
 
 =======
 * [NewFilter Example]
-  (http://godoc.org/github.com/wakiyamap/monautil/bloom#example-NewFilter)  
+  (http://godoc.org/github.com/monasuite/monautil/bloom#example-NewFilter)  
   Demonstrates how to create a new bloom filter, add a transaction hash to it,
   and check if the filter matches the transaction.
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/wakiyamap/monautil"
+	"github.com/monasuite/monautil"
 )
 
 func ExampleAmount() {

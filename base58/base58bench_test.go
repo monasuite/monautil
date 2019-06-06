@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/wakiyamap/monautil/base58"
+	"github.com/monasuite/monautil/base58"
 )
 
 func BenchmarkBase58Encode(b *testing.B) {

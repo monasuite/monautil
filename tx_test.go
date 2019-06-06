@@ -11,7 +11,7 @@ import (
 	"testing"
 
 	"github.com/monasuite/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monautil"
+	"github.com/monasuite/monautil"
 	"github.com/davecgh/go-spew/spew"
 )
 

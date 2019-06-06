@@ -11,8 +11,8 @@ import (
 
 	"github.com/monasuite/monad/chaincfg/chainhash"
 	"github.com/monasuite/monad/wire"
-	"github.com/wakiyamap/monautil"
-	"github.com/wakiyamap/monautil/bloom"
+	"github.com/monasuite/monautil"
+	"github.com/monasuite/monautil/bloom"
 )
 
 func TestMerkleBlock3(t *testing.T) {

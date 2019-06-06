@@ -9,7 +9,7 @@ import (
 
 	"github.com/monasuite/monad/btcec"
 	"github.com/monasuite/monad/chaincfg"
-	. "github.com/wakiyamap/monautil"
+	. "github.com/monasuite/monautil"
 )
 
 func TestEncodeDecodeWIF(t *testing.T) {

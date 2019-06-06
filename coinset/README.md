@@ -1,11 +1,11 @@
 coinset
 =======
 
-[![Build Status](http://img.shields.io/travis/wakiyamap/monautil.svg)]
-(https://travis-ci.org/wakiyamap/monautil) [![ISC License]
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)]
+(https://travis-ci.org/monasuite/monautil) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/wakiyamap/monautil/coinset)
+(http://godoc.org/github.com/monasuite/monautil/coinset)
 
 Package coinset provides monacoin-specific convenience functions for selecting
 from and managing sets of unspent transaction outpoints (UTXOs).
@@ -18,7 +18,7 @@ report.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/wakiyamap/monautil/coinset
+$ go get -u github.com/monasuite/monautil/coinset
 ```
 
 ## Usage

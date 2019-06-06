@@ -12,7 +12,7 @@ import (
 	"testing"
 	"unicode"
 
-	"github.com/wakiyamap/monautil"
+	"github.com/monasuite/monautil"
 )
 
 // TestAppDataDir tests the API for AppDataDir to ensure it gives expected

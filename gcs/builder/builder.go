@@ -13,7 +13,7 @@ import (
 	"github.com/monasuite/monad/chaincfg/chainhash"
 	"github.com/monasuite/monad/txscript"
 	"github.com/monasuite/monad/wire"
-	"github.com/wakiyamap/monautil/gcs"
+	"github.com/monasuite/monautil/gcs"
 )
 
 const (

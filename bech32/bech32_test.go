@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wakiyamap/monautil/bech32"
+	"github.com/monasuite/monautil/bech32"
 )
 
 func TestBech32(t *testing.T) {

@@ -2,11 +2,11 @@ gcs
 ==========
 
 <<<<<<< HEAD
-[![Build Status](http://img.shields.io/travis/wakiyamap/monautil.svg)]
-(https://travis-ci.org/wakiyamap/monautil) [![ISC License]
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)]
+(https://travis-ci.org/monasuite/monautil) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://godoc.org/github.com/wakiyamap/monautil/gcs?status.png)]
-(http://godoc.org/github.com/wakiyamap/monautil/gcs)
+[![GoDoc](https://godoc.org/github.com/monasuite/monautil/gcs?status.png)]
+(http://godoc.org/github.com/monasuite/monautil/gcs)
 =======
 [![Build Status](http://img.shields.io/travis/btcsuite/btcutil.svg)]
 (https://travis-ci.org/btcsuite/btcutil) [![ISC License]
@@ -24,7 +24,7 @@ A comprehensive suite of tests is provided to ensure proper functionality.
 
 ```bash
 <<<<<<< HEAD
-$ go get -u github.com/wakiyamap/monautil/gcs
+$ go get -u github.com/monasuite/monautil/gcs
 =======
 $ go get -u github.com/btcsuite/btcutil/gcs
 >>>>>>> upstream/master

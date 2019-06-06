@@ -14,8 +14,8 @@ import (
 	"github.com/btcsuite/golangcrypto/ripemd160"
 	"github.com/monasuite/monad/btcec"
 	"github.com/monasuite/monad/chaincfg"
-	"github.com/wakiyamap/monautil/base58"
-	"github.com/wakiyamap/monautil/bech32"
+	"github.com/monasuite/monautil/base58"
+	"github.com/monasuite/monautil/bech32"
 )
 
 // UnsupportedWitnessVerError describes an error where a segwit address being

@@ -1,13 +1,13 @@
 monautil
 =======
 
-[![Build Status](http://img.shields.io/travis/wakiyamap/monautil.svg)]
-(https://travis-ci.org/wakiyamap/monautil) [![Coverage Status]
-(http://img.shields.io/coveralls/wakiyamap/monautil.svg)]
-(https://coveralls.io/r/wakiyamap/monautil?branch=master) [![ISC License]
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)]
+(https://travis-ci.org/monasuite/monautil) [![Coverage Status]
+(http://img.shields.io/coveralls/monasuite/monautil.svg)]
+(https://coveralls.io/r/monasuite/monautil?branch=master) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/wakiyamap/monautil)
+(http://godoc.org/github.com/monasuite/monautil)
 
 Package monautil provides monacoin-specific convenience functions and types.
 A comprehensive suite of tests is provided to ensure proper functionality.  See
@@ -24,7 +24,7 @@ provided.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/wakiyamap/monautil
+$ go get -u github.com/monasuite/monautil
 ```
 
 ## GPG Verification Key

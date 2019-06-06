@@ -8,7 +8,7 @@ import (
 	"math"
 	"testing"
 
-	. "github.com/wakiyamap/monautil"
+	. "github.com/monasuite/monautil"
 )
 
 func TestAmountCreation(t *testing.T) {

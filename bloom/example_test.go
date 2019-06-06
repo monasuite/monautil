@@ -11,7 +11,7 @@ import (
 
 	"github.com/monasuite/monad/chaincfg/chainhash"
 	"github.com/monasuite/monad/wire"
-	"github.com/wakiyamap/monautil/bloom"
+	"github.com/monasuite/monautil/bloom"
 )
 
 // This example demonstrates how to create a new bloom filter, add a transaction

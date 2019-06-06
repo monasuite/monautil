@@ -12,7 +12,7 @@ import (
 	"testing"
 
 	"github.com/monasuite/monad/wire"
-	"github.com/wakiyamap/monautil/txsort"
+	"github.com/monasuite/monautil/txsort"
 )
 
 // TestSort ensures the transaction sorting works according to the BIP.

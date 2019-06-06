@@ -21,8 +21,8 @@ import (
 	"github.com/monasuite/monad/btcec"
 	"github.com/monasuite/monad/chaincfg"
 	"github.com/monasuite/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monautil"
-	"github.com/wakiyamap/monautil/base58"
+	"github.com/monasuite/monautil"
+	"github.com/monasuite/monautil/base58"
 )
 
 const (

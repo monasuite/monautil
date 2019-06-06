@@ -7,7 +7,7 @@ package bloom_test
 import (
 	"testing"
 
-	"github.com/wakiyamap/monautil/bloom"
+	"github.com/monasuite/monautil/bloom"
 )
 
 // TestMurmurHash3 ensure the MurmurHash3 function produces the correct hash

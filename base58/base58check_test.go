@@ -7,7 +7,7 @@ package base58_test
 import (
 	"testing"
 
-	"github.com/wakiyamap/monautil/base58"
+	"github.com/monasuite/monautil/base58"
 )
 
 var checkEncodingStringTests = []struct {

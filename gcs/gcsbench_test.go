@@ -10,7 +10,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/wakiyamap/monautil/gcs"
+	"github.com/monasuite/monautil/gcs"
 )
 
 func genRandFilterElements(numElements uint) ([][]byte, error) {

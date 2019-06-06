@@ -9,7 +9,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/wakiyamap/monautil/base58"
+	"github.com/monasuite/monautil/base58"
 )
 
 var stringTests = []struct {

@@ -8,7 +8,7 @@ import (
 	"fmt"
 
 	"github.com/monasuite/monad/chaincfg"
-	"github.com/wakiyamap/monautil/hdkeychain"
+	"github.com/monasuite/monautil/hdkeychain"
 )
 
 // This example demonstrates how to generate a cryptographically random seed

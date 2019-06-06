@@ -14,7 +14,7 @@ import (
 
 	"github.com/btcsuite/golangcrypto/ripemd160"
 	"github.com/monasuite/monad/chaincfg"
-	"github.com/wakiyamap/monautil"
+	"github.com/monasuite/monautil"
 )
 
 type CustomParamStruct struct {
