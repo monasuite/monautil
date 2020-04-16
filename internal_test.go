@@ -12,9 +12,9 @@ interface. The functions are only exported while the tests are being run.
 package monautil
 
 import (
-	"github.com/Roasbeef/monautil/bech32"
 	"github.com/monasuite/monad/btcec"
 	"github.com/monasuite/monautil/base58"
+	"github.com/monasuite/monautil/bech32"
 	"golang.org/x/crypto/ripemd160"
 )
 

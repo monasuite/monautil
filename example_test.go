@@ -18,9 +18,9 @@ func ExampleAmount() {
 	a = monautil.Amount(1e5)
 	fmt.Println("100,000 Satoshis:", a)
 	// Output:
-	// Zero Satoshi: 0 BTC
-	// 100,000,000 Satoshis: 1 BTC
-	// 100,000 Satoshis: 0.001 BTC
+	// Zero Satoshi: 0 MONA
+	// 100,000,000 Satoshis: 1 MONA
+	// 100,000 Satoshis: 0.001 MONA
 }
 
 func ExampleNewAmount() {
@@ -52,9 +52,9 @@ func ExampleNewAmount() {
 	}
 	fmt.Println(amountNaN) //Output 4
 
-	// Output: 1 BTC
-	// 0.01234567 BTC
-	// 0 BTC
+	// Output: 1 MONA
+	// 0.01234567 MONA
+	// 0 MONA
 	// invalid monacoin amount
 }
 
@@ -68,9 +68,9 @@ func ExampleAmount_unitConversions() {
 	fmt.Println("Satoshi to Satoshi:", amount.Format(monautil.AmountSatoshi))
 
 	// Output:
-	// Satoshi to kBTC: 444.333222111 kBTC
-	// Satoshi to BTC: 444333.222111 BTC
-	// Satoshi to MilliBTC: 444333222.111 mBTC
-	// Satoshi to MicroBTC: 444333222111 μBTC
-	// Satoshi to Satoshi: 44433322211100 Satoshi
+	// Satoshi to kBTC: 444.333222111 kMONA
+	// Satoshi to BTC: 444333.222111 MONA
+	// Satoshi to MilliBTC: 444333222.111 mMONA
+	// Satoshi to MicroBTC: 444333222111 μMONA
+	// Satoshi to Satoshi: 44433322211100 Watanabe
 }

@@ -119,48 +119,48 @@ func TestAmountUnitConversions(t *testing.T) {
 		s         string
 	}{
 		{
-			name:      "MBTC",
+			name:      "MMONA",
 			amount:    MaxSatoshi,
 			unit:      AmountMegaBTC,
 			converted: 21,
-			s:         "21 MBTC",
+			s:         "21 MMONA",
 		},
 		{
-			name:      "kBTC",
+			name:      "kMONA",
 			amount:    44433322211100,
 			unit:      AmountKiloBTC,
 			converted: 444.33322211100,
-			s:         "444.333222111 kBTC",
+			s:         "444.333222111 kMONA",
 		},
 		{
-			name:      "BTC",
+			name:      "MONA",
 			amount:    44433322211100,
 			unit:      AmountBTC,
 			converted: 444333.22211100,
-			s:         "444333.222111 BTC",
+			s:         "444333.222111 MONA",
 		},
 		{
-			name:      "mBTC",
+			name:      "mMONA",
 			amount:    44433322211100,
 			unit:      AmountMilliBTC,
 			converted: 444333222.11100,
-			s:         "444333222.111 mBTC",
+			s:         "444333222.111 mMONA",
 		},
 		{
 
-			name:      "μBTC",
+			name:      "μMONA",
 			amount:    44433322211100,
 			unit:      AmountMicroBTC,
 			converted: 444333222111.00,
-			s:         "444333222111 μBTC",
+			s:         "444333222111 μMONA",
 		},
 		{
 
-			name:      "satoshi",
+			name:      "Watanabe",
 			amount:    44433322211100,
 			unit:      AmountSatoshi,
 			converted: 44433322211100,
-			s:         "44433322211100 Satoshi",
+			s:         "44433322211100 Watanabe",
 		},
 		{
 
@@ -168,7 +168,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountUnit(-1),
 			converted: 4443332.2211100,
-			s:         "4443332.22111 1e-1 BTC",
+			s:         "4443332.22111 1e-1 MONA",
 		},
 	}
 
