@@ -5,6 +5,7 @@
 package coinset
 
 import (
+	"math/big"
 	"container/list"
 	"errors"
 	"sort"
@@ -51,7 +52,7 @@ var _ Coins = NewCoinSet(nil)
 func NewCoinSet(coins []Coin) *CoinSet {
 	newCoinSet := &CoinSet{
 		coinList:      list.New(),
-		totalValue:    0,
+		totalValue:    monautil.Amount(*big.NewInt(0)),
 		totalValueAge: 0,
 	}
 	for _, coin := range coins {
@@ -89,7 +90,7 @@ func (cs *CoinSet) Num() int {
 // the cached value amounts.
 func (cs *CoinSet) PushCoin(c Coin) {
 	cs.coinList.PushBack(c)
-	cs.totalValue += c.Value()
+	cs.totalValue.Add(cs.totalValue, c.Value())
 	cs.totalValueAge += c.ValueAge()
 }
 
@@ -117,7 +118,7 @@ func (cs *CoinSet) ShiftCoin() Coin {
 func (cs *CoinSet) removeElement(e *list.Element) Coin {
 	c := e.Value.(Coin)
 	cs.coinList.Remove(e)
-	cs.totalValue -= c.Value()
+	cs.totalValue.Sub(cs.totalValue, c.Value())
 	cs.totalValueAge -= c.ValueAge()
 	return c
 }
@@ -150,7 +151,9 @@ var (
 // satisfiesTargetValue checks that the totalValue is either exactly the targetValue
 // or is greater than the targetValue by at least the minChange amount.
 func satisfiesTargetValue(targetValue, minChange, totalValue monautil.Amount) bool {
-	return (totalValue == targetValue || totalValue >= targetValue+minChange)
+	var targetValuePlusMinChange monautil.Amount
+	targetValuePlusMinChange.Add(targetValue, minChange)
+	return (totalValue.Cmp(targetValue) == 0 || totalValue.Cmp(targetValuePlusMinChange) != -1)
 }
 
 // CoinSelector is an interface that wraps the CoinSelect method.
@@ -280,7 +283,8 @@ func (s MinPriorityCoinSelector) CoinSelect(targetValue monautil.Amount, coins [
 
 			for numLow := 1; numLow <= cutoffIndex && numLow+(i-cutoffIndex) <= s.MaxInputs; numLow++ {
 				allHigh := NewCoinSet(possibleCoins[cutoffIndex : i+1])
-				newTargetValue := targetValue - allHigh.TotalValue()
+				var newTargetValue monautil.Amount
+				newTargetValue.Sub(targetValue, allHigh.TotalValue())
 				newMaxInputs := allHigh.Num() + numLow
 				if newMaxInputs > numLow {
 					newMaxInputs = numLow
@@ -340,7 +344,7 @@ type byAmount []Coin
 
 func (a byAmount) Len() int           { return len(a) }
 func (a byAmount) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a byAmount) Less(i, j int) bool { return a[i].Value() < a[j].Value() }
+func (a byAmount) Less(i, j int) bool { return (a[i].Value().Cmp(a[j].Value()) != 1)}
 
 // SimpleCoin defines a concrete instance of Coin that is backed by a
 // monautil.Tx, a specific outpoint index, and the number of confirmations

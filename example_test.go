@@ -2,55 +2,55 @@ package monautil_test
 
 import (
 	"fmt"
-	"math"
+	//"math"
 
 	"github.com/monasuite/monautil"
 )
 
-func ExampleAmount() {
+//func ExampleAmount() {
 
-	a := monautil.Amount(0)
-	fmt.Println("Zero Satoshi:", a)
+	//a := new(monautil.Amount).SetInt(0)
+	//fmt.Println("Zero Satoshi:", a.String())
 
-	a = monautil.Amount(1e8)
-	fmt.Println("100,000,000 Satoshis:", a)
+	//a = new(monautil.Amount).SetFloat(1e8)
+	//fmt.Println("100,000,000 Satoshis:", a.String())
 
-	a = monautil.Amount(1e5)
-	fmt.Println("100,000 Satoshis:", a)
+	//a = new(monautil.Amount).SetFloat(1e5)
+	//fmt.Println("100,000 Satoshis:", a.String())
 	// Output:
 	// Zero Satoshi: 0 MONA
 	// 100,000,000 Satoshis: 1 MONA
 	// 100,000 Satoshis: 0.001 MONA
-}
+//}
 
 func ExampleNewAmount() {
-	amountOne, err := monautil.NewAmount(1)
+	amountOne, err := monautil.NewAmount(string("1"))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(amountOne) //Output 1
+	fmt.Println(amountOne.String()) //Output 1
 
-	amountFraction, err := monautil.NewAmount(0.01234567)
+	amountFraction, err := monautil.NewAmount(string("0.01234567"))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(amountFraction) //Output 2
+	fmt.Println(amountFraction.String()) //Output 2
 
-	amountZero, err := monautil.NewAmount(0)
+	amountZero, err := monautil.NewAmount(string("0"))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(amountZero) //Output 3
+	fmt.Println(amountZero.String()) //Output 3
 
-	amountNaN, err := monautil.NewAmount(math.NaN())
+	amountInf, err := monautil.NewAmount(string("105120000000000000001"))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(amountNaN) //Output 4
+	fmt.Println(amountInf.String()) //Output 4
 
 	// Output: 1 MONA
 	// 0.01234567 MONA
@@ -59,10 +59,10 @@ func ExampleNewAmount() {
 }
 
 func ExampleAmount_unitConversions() {
-	amount := monautil.Amount(44433322211100)
+	amount := new(monautil.Amount).SetInt(44433322211100)
 
 	fmt.Println("Satoshi to kBTC:", amount.Format(monautil.AmountKiloBTC))
-	fmt.Println("Satoshi to BTC:", amount)
+	fmt.Println("Satoshi to BTC:", amount.String())
 	fmt.Println("Satoshi to MilliBTC:", amount.Format(monautil.AmountMilliBTC))
 	fmt.Println("Satoshi to MicroBTC:", amount.Format(monautil.AmountMicroBTC))
 	fmt.Println("Satoshi to Satoshi:", amount.Format(monautil.AmountSatoshi))

@@ -12,5 +12,5 @@ const (
 	SatoshiPerBitcoin = 1e8
 
 	// MaxSatoshi is the maximum transaction amount allowed in satoshi.
-	MaxSatoshi = 10512e4 * SatoshiPerBitcoin
+	MaxSatoshi = 105.12e6 * SatoshiPerBitcoin
 )
