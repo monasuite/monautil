@@ -8,6 +8,8 @@ import (
 	"errors"
 	"math"
 	"strconv"
+
+	"github.com/shopspring/decimal"
 )
 
 // AmountUnit describes a method of converting an Amount to something
@@ -73,19 +75,30 @@ func round(f float64) Amount {
 // For creating a new Amount with an int64 value which denotes a quantity of Satoshi,
 // do a simple type conversion from type int64 to Amount.
 // See GoDoc for example: http://godoc.org/github.com/monasuite/monautil#example-Amount
-func NewAmount(f float64) (Amount, error) {
+func NewAmount(d decimal.Decimal) (Amount, error) {
 	// The amount is only considered invalid if it cannot be represented
 	// as an integer type.  This may happen if f is NaN or +-Infinity.
-	switch {
-	case math.IsNaN(f):
-		fallthrough
-	case math.IsInf(f, 1):
-		fallthrough
-	case math.IsInf(f, -1):
-		return 0, errors.New("invalid monacoin amount")
-	}
+	//switch {
+	//case math.IsNaN(f):
+	//	fallthrough
+	//case math.IsInf(f, 1):
+	//	fallthrough
+	//case math.IsInf(f, -1):
+	//	return 0, errors.New("invalid monacoin amount")
+	//}
 
-	return round(f * SatoshiPerBitcoin), nil
+	// for mwat(Inf+-)
+	if d.Cmp(decimal.NewFromInt(105.12e6*1e3)) == 1 {
+		return Amount(0), errors.New("invalid monacoin amount")
+	}
+	if d.Cmp(decimal.NewFromInt(-105.12e6*1e3)) == -1 {
+		return Amount(0), errors.New("invalid monacoin amount")
+	}
+	d2 := d.RoundBank(8)
+	decimalSatoshi := decimal.NewFromInt(SatoshiPerBitcoin)
+	d3 := d2.Mul(decimalSatoshi)
+
+	return Amount(d3.IntPart()), nil
 }
 
 // ToUnit converts a monetary amount counted in monacoin base units to a

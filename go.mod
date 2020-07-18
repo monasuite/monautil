@@ -12,6 +12,7 @@ require (
 	github.com/kkdai/bstream v1.0.0
 	github.com/monasuite/monad v0.21.0-beta
 	github.com/monasuite/monautil/psbt v1.0.1 // indirect
-	golang.org/x/crypto v0.0.0-20200214034016-1d94cc7ab1c6
+	github.com/shopspring/decimal v1.2.0
+	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37
 	gopkg.in/alecthomas/kingpin.v3-unstable v3.0.0-20191105091915-95d230a53780 // indirect
 )

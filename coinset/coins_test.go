@@ -24,12 +24,12 @@ type TestCoin struct {
 	TxNumConfs int64
 }
 
-func (c *TestCoin) Hash() *chainhash.Hash { return c.TxHash }
-func (c *TestCoin) Index() uint32         { return c.TxIndex }
+func (c *TestCoin) Hash() *chainhash.Hash  { return c.TxHash }
+func (c *TestCoin) Index() uint32          { return c.TxIndex }
 func (c *TestCoin) Value() monautil.Amount { return c.TxValue }
-func (c *TestCoin) PkScript() []byte      { return nil }
-func (c *TestCoin) NumConfs() int64       { return c.TxNumConfs }
-func (c *TestCoin) ValueAge() int64       { return int64(c.TxValue) * c.TxNumConfs }
+func (c *TestCoin) PkScript() []byte       { return nil }
+func (c *TestCoin) NumConfs() int64        { return c.TxNumConfs }
+func (c *TestCoin) ValueAge() int64        { return int64(c.TxValue) * c.TxNumConfs }
 
 func NewCoin(index int64, value monautil.Amount, numConfs int64) coinset.Coin {
 	h := sha256.New()

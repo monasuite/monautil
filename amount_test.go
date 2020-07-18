@@ -5,89 +5,90 @@
 package monautil_test
 
 import (
-	"math"
+	//"math"
 	"testing"
 
 	. "github.com/monasuite/monautil"
+	"github.com/shopspring/decimal"
 )
 
 func TestAmountCreation(t *testing.T) {
 	tests := []struct {
 		name     string
-		amount   float64
+		amount   decimal.Decimal
 		valid    bool
 		expected Amount
 	}{
 		// Positive tests.
 		{
 			name:     "zero",
-			amount:   0,
+			amount:   decimal.NewFromFloat(0),
 			valid:    true,
 			expected: 0,
 		},
 		{
 			name:     "max producible",
-			amount:   21e6,
+			amount:   decimal.NewFromFloat(10512e4),
 			valid:    true,
 			expected: MaxSatoshi,
 		},
 		{
 			name:     "min producible",
-			amount:   -21e6,
+			amount:   decimal.NewFromFloat(-10512e4),
 			valid:    true,
 			expected: -MaxSatoshi,
 		},
 		{
 			name:     "exceeds max producible",
-			amount:   21e6 + 1e-8,
+			amount:   decimal.NewFromFloat(10512e4 + 1e-8),
 			valid:    true,
 			expected: MaxSatoshi + 1,
 		},
 		{
 			name:     "exceeds min producible",
-			amount:   -21e6 - 1e-8,
+			amount:   decimal.NewFromFloat(-10512e4 - 1e-8),
 			valid:    true,
 			expected: -MaxSatoshi - 1,
 		},
 		{
 			name:     "one hundred",
-			amount:   100,
+			amount:   decimal.NewFromFloat(100),
 			valid:    true,
 			expected: 100 * SatoshiPerBitcoin,
 		},
 		{
 			name:     "fraction",
-			amount:   0.01234567,
+			amount:   decimal.NewFromFloat(0.01234567),
 			valid:    true,
 			expected: 1234567,
 		},
 		{
 			name:     "rounding up",
-			amount:   54.999999999999943157,
+			amount:   decimal.NewFromFloat(54.999999999999943157),
 			valid:    true,
 			expected: 55 * SatoshiPerBitcoin,
 		},
 		{
 			name:     "rounding down",
-			amount:   55.000000000000056843,
+			amount:   decimal.NewFromFloat(55.000000000000056843),
 			valid:    true,
 			expected: 55 * SatoshiPerBitcoin,
 		},
 
 		// Negative tests.
-		{
-			name:   "not-a-number",
-			amount: math.NaN(),
-			valid:  false,
-		},
+		//{
+		//	name:   "not-a-number",
+		//	amount: math.NaN(),
+		//	valid:  false,
+		//},
 		{
 			name:   "-infinity",
-			amount: math.Inf(-1),
+			amount: decimal.NewFromFloat(-105.12e6*1e3 - 1),
 			valid:  false,
 		},
 		{
 			name:   "+infinity",
-			amount: math.Inf(1),
+			amount: decimal.NewFromFloat(105.12e6*1e3 + 1),
 			valid:  false,
 		},
 	}
@@ -122,8 +123,8 @@ func TestAmountUnitConversions(t *testing.T) {
 			name:      "MMONA",
 			amount:    MaxSatoshi,
 			unit:      AmountMegaBTC,
-			converted: 21,
-			s:         "21 MMONA",
+			converted: 105.12,
+			s:         "105.12 MMONA",
 		},
 		{
 			name:      "kMONA",

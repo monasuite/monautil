@@ -2,9 +2,10 @@ package monautil_test
 
 import (
 	"fmt"
-	"math"
+	//"math"
 
 	"github.com/monasuite/monautil"
+	"github.com/shopspring/decimal"
 )
 
 func ExampleAmount() {
@@ -24,28 +25,28 @@ func ExampleAmount() {
 }
 
 func ExampleNewAmount() {
-	amountOne, err := monautil.NewAmount(1)
+	amountOne, err := monautil.NewAmount(decimal.NewFromFloat(1))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println(amountOne) //Output 1
 
-	amountFraction, err := monautil.NewAmount(0.01234567)
+	amountFraction, err := monautil.NewAmount(decimal.NewFromFloat(0.01234567))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println(amountFraction) //Output 2
 
-	amountZero, err := monautil.NewAmount(0)
+	amountZero, err := monautil.NewAmount(decimal.NewFromFloat(0))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println(amountZero) //Output 3
 
-	amountNaN, err := monautil.NewAmount(math.NaN())
+	amountNaN, err := monautil.NewAmount(decimal.NewFromFloat(1051200000000.00000001))
 	if err != nil {
 		fmt.Println(err)
 		return
