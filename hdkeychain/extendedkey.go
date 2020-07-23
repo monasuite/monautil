@@ -30,8 +30,8 @@ const (
 	// to a master node.
 	RecommendedSeedLen = 32 // 256 bits
 
-	// HardenedKeyStart is the index at which a hardended key starts.  Each
-	// extended key has 2^31 normal child keys and 2^31 hardned child keys.
+	// HardenedKeyStart is the index at which a hardened key starts.  Each
+	// extended key has 2^31 normal child keys and 2^31 hardened child keys.
 	// Thus the range for normal child keys is [0, 2^31 - 1] and the range
 	// for hardened child keys is [2^31, 2^32 - 1].
 	HardenedKeyStart = 0x80000000 // 2^31
@@ -191,6 +191,13 @@ func (k *ExtendedKey) ParentFingerprint() uint32 {
 	return binary.BigEndian.Uint32(k.parentFP)
 }
 
+// ChainCode returns the chain code part of this extended key.
+//
+// It is identical for both public and private extended keys.
+func (k *ExtendedKey) ChainCode() []byte {
+	return append([]byte{}, k.chainCode...)
+}
+
 // Child returns a derived child extended key at the given index.  When this
 // extended key is a private extended key (as determined by the IsPrivate
 // function), a private extended key will be derived.  Otherwise, the derived
@@ -198,7 +205,7 @@ func (k *ExtendedKey) ParentFingerprint() uint32 {
 //
 // When the index is greater to or equal than the HardenedKeyStart constant, the
 // derived extended key will be a hardened extended key.  It is only possible to
-// derive a hardended extended key from a private extended key.  Consequently,
+// derive a hardened extended key from a private extended key.  Consequently,
 // this function will return ErrDeriveHardFromPublic if a hardened child
 // extended key is requested from a public extended key.
 //
@@ -335,7 +342,10 @@ func (k *ExtendedKey) Child(i uint32) (*ExtendedKey, error) {
 		k.depth+1, i, isPrivate), nil
 }
 
-// ChildIndex returns the child index used to derive the extended key.
+// ChildNum returns the index at which the child extended key was derived.
+//
+// Extended keys with ChildNum value between 0 and 2^31-1 are normal child
+// keys, and those with a value between 2^31 and 2^32-1 are hardened keys.
 func (k *ExtendedKey) ChildIndex() uint32 {
 	return k.childNum
 }

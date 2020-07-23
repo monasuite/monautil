@@ -8,6 +8,9 @@ require (
 	github.com/davecgh/go-spew v1.1.1
 	github.com/kkdai/bstream v1.0.0
 	github.com/monasuite/monad v0.22.1-beta
+	github.com/monasuite/monautil/psbt v1.1.0
 	github.com/shopspring/decimal v1.2.0
 	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37
 )
+
+replace github.com/monasuite/monautil/psbt => ./psbt
