@@ -94,7 +94,7 @@ func NewAmount(d decimal.Decimal) (Amount, error) {
 	if d.Cmp(decimal.NewFromInt(-105.12e6*1e3)) == -1 {
 		return Amount(0), errors.New("invalid monacoin amount")
 	}
-	d2 := d.RoundBank(8)
+	d2 := d.Round(8)
 	decimalSatoshi := decimal.NewFromInt(SatoshiPerBitcoin)
 	d3 := d2.Mul(decimalSatoshi)
 
