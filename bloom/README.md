@@ -1,11 +1,10 @@
 bloom
 =====
 
-[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)]
-(https://travis-ci.org/monasuite/monautil) [![ISC License]
-(http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/monasuite/monautil/bloom)
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)](https://travis-ci.org/monasuite/monautil)
+[![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
+[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](https://pkg.go.dev/github.com/monasuite/monautil/bloom)
+
 
 Package bloom provides an API for dealing with monacoin-specific bloom filters.
 

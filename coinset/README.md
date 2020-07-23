@@ -1,11 +1,9 @@
 coinset
 =======
 
-[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)]
-(https://travis-ci.org/monasuite/monautil) [![ISC License]
-(http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/monasuite/monautil/coinset)
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)](https://travis-ci.org/monasuite/monautil)
+[![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
+[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](https://pkg.go.dev/github.com/monasuite/monautil/coinset)
 
 Package coinset provides monacoin-specific convenience functions for selecting
 from and managing sets of unspent transaction outpoints (UTXOs).

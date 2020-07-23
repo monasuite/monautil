@@ -1,9 +1,9 @@
 bech32
 ==========
 
-[![Build Status](http://img.shields.io/travis/btcsuite/monautil.svg)](https://travis-ci.org/btcsuite/monautil)
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)](https://travis-ci.org/monasuite/monautil)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://godoc.org/github.com/btcsuite/monautil/bech32?status.png)](http://godoc.org/github.com/btcsuite/monautil/bech32)
+[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](https://pkg.go.dev/github.com/monasuite/monautil/bech32)
 
 Package bech32 provides a Go implementation of the bech32 format specified in
 [BIP 173](https://github.com/monacoin/bips/blob/master/bip-0173.mediawiki).

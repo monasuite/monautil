@@ -1,11 +1,9 @@
 base58
 ==========
 
-[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)]
-(https://travis-ci.org/monasuite/monautil) [![ISC License]
-(http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://godoc.org/github.com/monasuite/monautil/base58?status.png)]
-(http://godoc.org/github.com/monasuite/monautil/base58)
+[![Build Status](http://img.shields.io/travis/monasuite/monautil.svg)](https://travis-ci.org/monasuite/monautil)
+[![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
+[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](https://pkg.go.dev/github.com/monasuite/monautil/base58)
 
 Package base58 provides an API for encoding and decoding to and from the
 modified base58 encoding.  It also provides an API to do Base58Check encoding,
