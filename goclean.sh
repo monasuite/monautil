@@ -30,7 +30,7 @@ env GORACE="halt_on_error=1" go test -race ./...
 echo "mode: count" > profile.cov
 
 # Standard go tooling behavior is to ignore dirs with leading underscores.
-for dir in $(find . -maxdepth 10 -not -path './.git*' -not -path '*/_*' -type d);
+for dir in $(find . -maxdepth 10 -not -path './.git*' -not -path '*/_*' -not -path './psbt' -type d);
 do
 if ls $dir/*.go &> /dev/null; then
   go test -covermode=count -coverprofile=$dir/profile.tmp $dir
@@ -40,6 +40,14 @@ if ls $dir/*.go &> /dev/null; then
   fi
 fi
 done
+
+cd psbt
+go test -covermode=count -coverprofile=profile.tmp
+if [ -f profile.tmp ]; then
+  cat profile.tmp | tail -n +2 >> ../profile.cov
+  rm profile.tmp
+fi
+cd ../
 
 go tool cover -func profile.cov
 
