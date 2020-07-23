@@ -131,5 +131,6 @@ func (a Amount) String() string {
 // useful for services that build on top of monacoin (for example, calculating
 // a fee by multiplying by a percentage).
 func (a Amount) MulF64(f float64) Amount {
-	return round(float64(a) * f)
+	return Amount(decimal.NewFromInt(int64(a)).Mul(decimal.NewFromFloat(f)).Round(0).IntPart())
+	//return round(float64(a) * f)
 }
