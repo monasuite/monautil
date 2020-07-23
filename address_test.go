@@ -50,8 +50,8 @@ func TestAddresses(t *testing.T) {
 		// Positive P2PKH tests.
 		{
 			name:    "mainnet p2pkh",
-			addr:    "1MirQ9bwyQcGVJPwKUgapu5ouK2E2Ey4gX",
-			encoded: "1MirQ9bwyQcGVJPwKUgapu5ouK2E2Ey4gX",
+			addr:    "M9vQFWksNwMShpHKZJqDdMPFjkyGDRtxyn",
+			encoded: "M9vQFWksNwMShpHKZJqDdMPFjkyGDRtxyn",
 			valid:   true,
 			result: monautil.TstAddressPubKeyHash(
 				[ripemd160.Size]byte{
@@ -68,8 +68,8 @@ func TestAddresses(t *testing.T) {
 		},
 		{
 			name:    "mainnet p2pkh 2",
-			addr:    "12MzCDwodF9G1e7jfwLXfR164RNtx4BRVG",
-			encoded: "12MzCDwodF9G1e7jfwLXfR164RNtx4BRVG",
+			addr:    "MXCeTRYF62fdUtHT8CJujoaVEduGf5hQP6",
+			encoded: "MXCeTRYF62fdUtHT8CJujoaVEduGf5hQP6",
 			valid:   true,
 			result: monautil.TstAddressPubKeyHash(
 				[ripemd160.Size]byte{
@@ -148,8 +148,8 @@ func TestAddresses(t *testing.T) {
 			// output: 3c9018e8d5615c306d72397f8f5eef44308c98fb576a88e030c25456b4f3a7ac
 			// input:  837dea37ddc8b1e3ce646f1a656e79bbd8cc7f558ac56a169626d649ebe2a3ba.
 			name:    "mainnet p2sh",
-			addr:    "3QJmV3qfvL9SuYo34YihAf3sRCW3qSinyC",
-			encoded: "3QJmV3qfvL9SuYo34YihAf3sRCW3qSinyC",
+			addr:    "PAcRB4FJvqfpnyykgQVp3ykBtHFyr1o6G1",
+			encoded: "PAcRB4FJvqfpnyykgQVp3ykBtHFyr1o6G1",
 			valid:   true,
 			result: monautil.TstAddressScriptHash(
 				[ripemd160.Size]byte{
@@ -206,8 +206,8 @@ func TestAddresses(t *testing.T) {
 			// output: b0539a45de13b3e0403909b8bd1a555b8cbe45fd4e3f3fda76f3a5f52835c29d
 			// input: (not yet redeemed at time test was written)
 			name:    "mainnet p2sh 2",
-			addr:    "3NukJ6fYZJ5Kk8bPjycAnruZkE5Q7UW7i8",
-			encoded: "3NukJ6fYZJ5Kk8bPjycAnruZkE5Q7UW7i8",
+			addr:    "PWsuDix8G8pvVHTSF2vMKPFxnSiy4Ub5QS",
+			encoded: "PWsuDix8G8pvVHTSF2vMKPFxnSiy4Ub5QS",
 			valid:   true,
 			result: monautil.TstAddressScriptHash(
 				[ripemd160.Size]byte{
@@ -225,8 +225,8 @@ func TestAddresses(t *testing.T) {
 		{
 			// Taken from monacoind base58_keys_valid.
 			name:    "testnet p2sh",
-			addr:    "2NBFNJTktNa7GZusGbDbGKRZTxdK9VVez3n",
-			encoded: "2NBFNJTktNa7GZusGbDbGKRZTxdK9VVez3n",
+			addr:    "pGHsx2PsNMnehUxHwKzxwo19yz3gmQfgqd",
+			encoded: "pGHsx2PsNMnehUxHwKzxwo19yz3gmQfgqd",
 			valid:   true,
 			result: monautil.TstAddressScriptHash(
 				[ripemd160.Size]byte{
@@ -261,7 +261,7 @@ func TestAddresses(t *testing.T) {
 		{
 			name:    "mainnet p2pk compressed (0x02)",
 			addr:    "02192d74d0cb94344c9569c2e77901573d8d7903c3ebec3a957724895dca52c6b4",
-			encoded: "13CG6SJ3yHUXo4Cr2RY4THLLJrNFuG3gUg",
+			encoded: "MA6RKsCTUJeLgjBBFQBzhYwfn5FRXNqZvu",
 			valid:   true,
 			result: monautil.TstAddressPubKey(
 				[]byte{
@@ -283,7 +283,7 @@ func TestAddresses(t *testing.T) {
 		{
 			name:    "mainnet p2pk compressed (0x03)",
 			addr:    "03b0bd634234abbb1ba1e986e884185c61cf43e001f9137f23c2c409273eb16e65",
-			encoded: "15sHANNUBSh6nDp8XkDPmQcW6n3EFwmvE6",
+			encoded: "MCmSPoGsgTruftnTkisL1gDqZzvPnSU6GB",
 			valid:   true,
 			result: monautil.TstAddressPubKey(
 				[]byte{
@@ -306,7 +306,7 @@ func TestAddresses(t *testing.T) {
 			name: "mainnet p2pk uncompressed (0x04)",
 			addr: "0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2" +
 				"e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3",
-			encoded: "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+			encoded: "M9WkdmMerYbbLfjDUjZjWKFdGaXRTNqCRX",
 			valid:   true,
 			result: monautil.TstAddressPubKey(
 				[]byte{
@@ -335,7 +335,7 @@ func TestAddresses(t *testing.T) {
 			name: "mainnet p2pk hybrid (0x06)",
 			addr: "06192d74d0cb94344c9569c2e77901573d8d7903c3ebec3a957724895dca52c6b4" +
 				"0d45264838c0bd96852662ce6a847b197376830160c6d2eb5e6a4c44d33f453e",
-			encoded: "1Ja5rs7XBZnK88EuLVcFqYGMEbBitzchmX",
+			encoded: "MRUF6J1vgax81oDEZUGC5osghp4tTsREka",
 			valid:   true,
 			result: monautil.TstAddressPubKey(
 				[]byte{
@@ -364,7 +364,7 @@ func TestAddresses(t *testing.T) {
 			name: "mainnet p2pk hybrid (0x07)",
 			addr: "07b0bd634234abbb1ba1e986e884185c61cf43e001f9137f23c2c409273eb16e65" +
 				"37a576782eba668a7ef8bd3b3cfb1edb7117ab65129b8a2e681f3c1e0908ef7b",
-			encoded: "1ExqMmf6yMxcBMzHjbj41wbqYuqoX6uBLG",
+			encoded: "MMrzbCZWUP8R52xcxaNzGDDB28iy9HpFD7",
 			valid:   true,
 			result: monautil.TstAddressPubKey(
 				[]byte{
@@ -523,8 +523,8 @@ func TestAddresses(t *testing.T) {
 		// Segwit address tests.
 		{
 			name:    "segwit mainnet p2wpkh v0",
-			addr:    "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4",
-			encoded: "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4",
+			addr:    "MONA1QVZVKJN4Q3NSZQXRV3NRAGA2R822XJTY3Q96530",
+			encoded: "mona1qvzvkjn4q3nszqxrv3nraga2r822xjty3q96530",
 			valid:   true,
 			result: monautil.TstAddressWitnessPubKeyHash(
 				0,
@@ -542,8 +542,8 @@ func TestAddresses(t *testing.T) {
 		},
 		{
 			name:    "segwit mainnet p2wsh v0",
-			addr:    "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3",
-			encoded: "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3",
+			addr:    "mona1qwqdg6squsna38e46795at95yu9atm8azzmyvckulcc7kytlcckxs824ha6",
+			encoded: "mona1qwqdg6squsna38e46795at95yu9atm8azzmyvckulcc7kytlcckxs824ha6",
 			valid:   true,
 			result: monautil.TstAddressWitnessScriptHash(
 				0,
@@ -565,8 +565,8 @@ func TestAddresses(t *testing.T) {
 		},
 		{
 			name:    "segwit testnet p2wpkh v0",
-			addr:    "tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx",
-			encoded: "tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx",
+			addr:    "tmona1qhye4wfp26kn0l7ynpn5a4hvt539xc3zfeap5he",
+			encoded: "tmona1qhye4wfp26kn0l7ynpn5a4hvt539xc3zfeap5he",
 			valid:   true,
 			result: monautil.TstAddressWitnessPubKeyHash(
 				0,
@@ -584,8 +584,8 @@ func TestAddresses(t *testing.T) {
 		},
 		{
 			name:    "segwit testnet p2wsh v0",
-			addr:    "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7",
-			encoded: "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7",
+			addr:    "tmona1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qwlyd0j",
+			encoded: "tmona1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qwlyd0j",
 			valid:   true,
 			result: monautil.TstAddressWitnessScriptHash(
 				0,
@@ -607,8 +607,8 @@ func TestAddresses(t *testing.T) {
 		},
 		{
 			name:    "segwit testnet p2wsh witness v0",
-			addr:    "tb1qqqqqp399et2xygdj5xreqhjjvcmzhxw4aywxecjdzew6hylgvsesrxh6hy",
-			encoded: "tb1qqqqqp399et2xygdj5xreqhjjvcmzhxw4aywxecjdzew6hylgvsesrxh6hy",
+			addr:    "tmona1qqqqqp399et2xygdj5xreqhjjvcmzhxw4aywxecjdzew6hylgvseszfvrwg",
+			encoded: "tmona1qqqqqp399et2xygdj5xreqhjjvcmzhxw4aywxecjdzew6hylgvseszfvrwg",
 			valid:   true,
 			result: monautil.TstAddressWitnessScriptHash(
 				0,
