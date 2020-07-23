@@ -15,7 +15,7 @@
 set -ex
 
 # Automatic checks
-test -z "$(gometalinter --disable-all \
+test -z "$(golangci-lint run --disable-all \
 --enable=gofmt \
 --enable=goimports \
 --enable=golint \
