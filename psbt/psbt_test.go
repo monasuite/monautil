@@ -11,10 +11,10 @@ import (
 	"encoding/hex"
 	"testing"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/monasuite/monad/chaincfg/chainhash"
 	"github.com/monasuite/monad/txscript"
 	"github.com/monasuite/monad/wire"
-	"github.com/davecgh/go-spew/spew"
 )
 
 // Test vectors from:
