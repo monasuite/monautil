@@ -101,6 +101,17 @@ func NewAmount(d decimal.Decimal) (Amount, error) {
 	return Amount(d3.IntPart()), nil
 }
 
+// ToDecimalUnit converts a monetary amount counted in monacoin base units to a
+// Decimal value representing an amount of monacoin.
+func (a *Amount) ToDecimalUnit(u AmountUnit) decimal.Decimal {
+	return decimal.NewFromInt(int64(*a)).Shift(int32(-u - 8))
+}
+
+// ToDecimalBTC is the equivalent of calling ToDecimalUnit with AmountBTC.
+func (a *Amount) ToDecimalBTC() decimal.Decimal {
+	return a.ToDecimalUnit(AmountBTC)
+}
+
 // ToUnit converts a monetary amount counted in monacoin base units to a
 // floating point value representing an amount of monacoin.
 func (a Amount) ToUnit(u AmountUnit) float64 {
@@ -118,7 +129,7 @@ func (a Amount) ToBTC() float64 {
 // the units with SI notation, or "Satoshi" for the base unit.
 func (a Amount) Format(u AmountUnit) string {
 	units := " " + u.String()
-	return strconv.FormatFloat(a.ToUnit(u), 'f', -int(u+8), 64) + units
+	return a.ToDecimalUnit(u).String() + units
 }
 
 // String is the equivalent of calling Format with AmountBTC.

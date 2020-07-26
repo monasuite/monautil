@@ -117,6 +117,7 @@ func TestAmountUnitConversions(t *testing.T) {
 		amount    Amount
 		unit      AmountUnit
 		converted float64
+		decimal   decimal.Decimal
 		s         string
 	}{
 		{
@@ -124,6 +125,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    MaxSatoshi,
 			unit:      AmountMegaBTC,
 			converted: 105.12,
+			decimal:   decimal.NewFromFloat(105.12),
 			s:         "105.12 MMONA",
 		},
 		{
@@ -131,6 +133,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountKiloBTC,
 			converted: 444.33322211100,
+			decimal:   decimal.NewFromFloat(444.33322211100),
 			s:         "444.333222111 kMONA",
 		},
 		{
@@ -138,6 +141,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountBTC,
 			converted: 444333.22211100,
+			decimal:   decimal.NewFromFloat(444333.22211100),
 			s:         "444333.222111 MONA",
 		},
 		{
@@ -145,6 +149,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountMilliBTC,
 			converted: 444333222.11100,
+			decimal:   decimal.NewFromFloat(444333222.11100),
 			s:         "444333222.111 mMONA",
 		},
 		{
@@ -153,6 +158,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountMicroBTC,
 			converted: 444333222111.00,
+			decimal:   decimal.NewFromFloat(444333222111.00),
 			s:         "444333222111 μMONA",
 		},
 		{
@@ -161,6 +167,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountSatoshi,
 			converted: 44433322211100,
+			decimal:   decimal.NewFromFloat(44433322211100),
 			s:         "44433322211100 Watanabe",
 		},
 		{
@@ -169,6 +176,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountUnit(-1),
 			converted: 4443332.2211100,
+			decimal:   decimal.NewFromFloat(4443332.2211100),
 			s:         "4443332.22111 1e-1 MONA",
 		},
 	}
@@ -191,6 +199,14 @@ func TestAmountUnitConversions(t *testing.T) {
 		f2 := test.amount.ToBTC()
 		if f1 != f2 {
 			t.Errorf("%v: ToBTC does not match ToUnit(AmountBTC): %v != %v", test.name, f1, f2)
+		}
+
+		// Verify that Amount.ToDecimalBTC works as advertised.
+		d1 := test.amount.ToDecimalUnit(AmountBTC)
+		d2 := test.amount.ToDecimalBTC()
+		// When use "!=" of decimal, value always different.
+		if d1.Cmp(d2) != 0 {
+			t.Errorf("%v: ToDecimalBTC does not match ToDecimalUnit(AmountBTC): %v != %v", test.name, d1, d2)
 		}
 
 		// Verify that Amount.String works as advertised.
